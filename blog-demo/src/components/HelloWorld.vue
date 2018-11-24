@@ -84,12 +84,28 @@
 </template>
 
 <script>
+import {mapActions} from 'vuex'
 export default {
   name: 'HelloWorld',
   data () {
     return {
       msg: 'Welcome to Your Vue.js App'
     }
+  },
+  methods:{
+    ...mapActions(['exampleGet']),
+    test(){
+      this.exampleGet()
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    }
+  },
+  mounted(){
+    this.test()
   }
 }
 </script>

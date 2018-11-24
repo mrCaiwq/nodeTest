@@ -1,6 +1,7 @@
 const Koa = require('koa')
 const ConnectDb = require('./config/connectDb.js')
 const example_router = require('./routes/api/example_router')
+const cors = require('koa2-cors')
 const app = new Koa()
 const views = require('koa-views')
 const json = require('koa-json')
@@ -12,10 +13,12 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 
 ConnectDb('mongodb://127.0.0.1:27017')
-
+app.use(cors())
 app.use(example_router.routes()).use(example_router.allowedMethods())
 // error handler
 onerror(app)
+
+
 
 // middlewares
 app.use(bodyparser({

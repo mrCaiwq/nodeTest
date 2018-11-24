@@ -19,11 +19,11 @@ const router = new Router({
   routes
 })
 
-router.beforeEach((to, from, next) => {
-  //除了登陆页面，其余页面均需要登陆
-  if(to.path != '/login'){
-    return next({ path: '/' })
-  }
-})
+// router.beforeEach((to, from, next) => {
+//   //除了登陆页面，其余页面均需要登陆
+//   if(to.path != '/login'){
+//     return next({ path: '/' })
+//   }
+// })
 
 export default router

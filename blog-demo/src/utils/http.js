@@ -4,10 +4,10 @@ import store from "../store";
 import { Message, Notification } from "element-ui";
 
 const addAuthorization = config => {
-  let { isLogin, token } = store.state.session;
-  if (isLogin) {
-    config.headers.Authorization = token;
-  }
+  // let { isLogin, token } = store.state.session;
+  // if (isLogin) {
+  //   config.headers.Authorization = token;
+  // }
 };
 
 const http = axios.create({
