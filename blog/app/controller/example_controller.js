@@ -3,9 +3,8 @@ const Example_col = require('../model/example')
 //get请求返回所有数据
 const getExample = async (ctx, next) => {
     const req = ctx.request.body;
-
+    
     const examples = await Example_col.find({}, { _id: 0});
-
     ctx.status = 200;
     ctx.body = {
         data:{
@@ -41,7 +40,8 @@ const postExample = async (ctx, next) => {
         data: result,
         meta:{
             msg: 'post request!!',
-            desc: 'insert success!'
+            desc: 'insert success!',
+            code: 0
         }
     }
 }

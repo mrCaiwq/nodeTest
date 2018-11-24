@@ -13,6 +13,11 @@ const actions = {
         return exampleRequest().then(data => {
             return data
         }) 
+    },
+    exampleCreate({commit, state},msg){
+        return examplePost(msg).then(data => {
+            return data
+        })
     }
 }
 

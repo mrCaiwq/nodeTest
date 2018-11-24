@@ -12,6 +12,6 @@ export function examplePost (data){
     return fetch({
         url:'/example/post',
         method:'post',
-        data,
+        data:data,
     })
 }

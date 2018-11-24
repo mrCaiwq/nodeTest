@@ -13,8 +13,6 @@ const index = require('./routes/index')
 const users = require('./routes/users')
 
 ConnectDb('mongodb://127.0.0.1:27017')
-app.use(cors())
-app.use(example_router.routes()).use(example_router.allowedMethods())
 // error handler
 onerror(app)
 
@@ -48,5 +46,6 @@ app.use(users.routes(), users.allowedMethods())
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
-
+app.use(cors())
+app.use(example_router.routes()).use(example_router.allowedMethods())
 module.exports = app

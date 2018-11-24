@@ -93,9 +93,19 @@ export default {
     }
   },
   methods:{
-    ...mapActions(['exampleGet']),
+    ...mapActions(['exampleGet','exampleCreate']),
     test(){
       this.exampleGet()
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
+    },
+    test2(){
+      let msg = {msg :'test post request'}
+      this.exampleCreate(msg)
       .then(data => {
         console.log(data)
       })
@@ -105,6 +115,7 @@ export default {
     }
   },
   mounted(){
+    this.test2()
     this.test()
   }
 }
