@@ -9,10 +9,10 @@ const onerror = require('koa-onerror')
 const bodyparser = require('koa-bodyparser')
 const logger = require('koa-logger')
 
-const index = require('./routes/index')
+const index = require('./routes/api')
 const users = require('./routes/users')
 
-ConnectDb('mongodb://127.0.0.1:27017')
+ConnectDb('mongodb://127.0.0.1:27017/nodeTestDb')
 // error handler
 onerror(app)
 
@@ -39,13 +39,13 @@ app.use(async (ctx, next) => {
 })
 
 // routes
-app.use(index.routes(), index.allowedMethods())
-app.use(users.routes(), users.allowedMethods())
+// app.use(index.routes(), index.allowedMethods())
+// app.use(users.routes(), users.allowedMethods())
 
 // error-handling
 app.on('error', (err, ctx) => {
   console.error('server error', err, ctx)
 });
 app.use(cors())
-app.use(example_router.routes()).use(example_router.allowedMethods())
+app.use(index())
 module.exports = app

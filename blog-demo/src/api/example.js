@@ -15,3 +15,11 @@ export function examplePost (data){
         data:data,
     })
 }
+
+export function registerPost(data){
+    return fetch({
+        url:'/register',
+        method:'post',
+        data:data,
+    })
+}

@@ -8,8 +8,7 @@ const getExample = async (ctx, next) => {
     ctx.status = 200;
     ctx.body = {
         data:{
-            data: req,
-            examples,
+            data: examples,
         },
         meta:{
             msg: 'get request!!',
