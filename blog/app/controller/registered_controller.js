@@ -1,5 +1,6 @@
 const register_col = require('../model/registered')
 const jwt = require('jsonwebtoken')
+const createToken = require('../../utils/createToken.js')
 const crypto = require('crypto')
 const moment = require('moment')
 
@@ -21,12 +22,12 @@ const postRegister = async (ctx, next) => {
         return;
     }
     const hashPassword = crypto.createHash('sha1')
-    const hashToken = crypto.createHash('sha1')
+    // const hashToken = crypto.createHash('sha1')
     let user = {
         username: req.username,
         password: hashPassword.update(req.password).digest('hex'),
         cellphone: req.cellphone,
-        token: hashToken.update(req.password + req.username).digest('hex'),
+        token: createToken.createToken(req.username+req.password),
     }
     user.create_time = moment().format();
     let doc = await check.checkName(req.username)
@@ -89,16 +90,6 @@ const checkError = function() {
     return obj
 }
 
-//创建token
-const createToken = (data => {
-    let salt = 'aaa'
-    const token = jwt.sign({
-        user: data,
-    }, salt, {
-        expiresIn: 60*60*1,
-    })
-    return token
-})
 
 // 暴露出这两个方法，在路由中使用
 module.exports = { 

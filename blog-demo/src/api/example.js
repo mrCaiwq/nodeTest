@@ -23,3 +23,11 @@ export function registerPost(data){
         data:data,
     })
 }
+
+export function loginPost(data) {
+    return fetch({
+        url:'/login',
+        method: 'post',
+        data: data,
+    })
+}

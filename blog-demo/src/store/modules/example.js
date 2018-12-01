@@ -1,4 +1,4 @@
-import {exampleRequest, examplePost, registerPost} from '../../api/example'
+import {exampleRequest, examplePost, registerPost, loginPost} from '../../api/example'
 
 const state = {
 
@@ -21,6 +21,11 @@ const actions = {
     },
     register({commit, state},msg){
         return registerPost(msg).then(data => {
+            return data
+        })
+    },
+    login({commit, state}, msg){
+        return loginPost(msg).then(data => {
             return data
         })
     }

@@ -93,7 +93,7 @@ export default {
     }
   },
   methods:{
-    ...mapActions(['exampleGet','exampleCreate','register']),
+    ...mapActions(['exampleGet','exampleCreate','register','login']),
     test(){
       this.exampleGet()
       .then(data => {
@@ -115,7 +115,7 @@ export default {
     },
     test3(){
       let msg = {
-        username:'张三',
+        username:'张四',
         password:'123456',
         cellphone:13715459296,
       }
@@ -126,11 +126,25 @@ export default {
       .catch(err => {
         console.log(err)
       })
+    },
+    test4(){
+      let msg = {
+        cellphone: '13715459296',
+        password: '123456'
+      }
+      this.login(msg)
+      .then(data => {
+        console.log(data)
+      })
+      .catch(err => {
+        console.log(err)
+      })
     }
   },
   mounted(){
     this.test2()
-    this.test3()
+    this.test4()
+    // this.test3()
     this.test()
   }
 }
